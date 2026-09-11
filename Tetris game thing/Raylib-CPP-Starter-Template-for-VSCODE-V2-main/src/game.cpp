@@ -52,6 +52,10 @@ void Game::HandleInput()
 void Game::MoveBlockLeft()
 {
     currentBlock.Move(0, -1);
+    if(IsBlockOutside())
+    {
+        currentBlock.Move(0, 1);
+    }
 
 }
 
@@ -63,4 +67,17 @@ void Game::MoveBlockRight()
 void Game::MoveBlockDown()
 {
     currentBlock.Move(1, 0);
+}
+
+bool Game::IsBlockOutside()
+{
+    std::vector<Position> tiles = currentBlock.GetCellPosition();
+    for(Position item: tiles)
+    {
+        if(grid.IsCellOutide(item.row, item.column))
+        {
+            return true;
+        }
+    }
+    return false;
 }

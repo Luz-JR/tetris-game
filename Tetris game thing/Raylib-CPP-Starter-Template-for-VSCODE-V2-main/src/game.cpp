@@ -62,11 +62,19 @@ void Game::MoveBlockLeft()
 void Game::MoveBlockRight()
 {
     currentBlock.Move(0, 1);
+    if(IsBlockOutside())
+    {
+        currentBlock.Move(0, -1);
+    }
 }
 
 void Game::MoveBlockDown()
 {
     currentBlock.Move(1, 0);
+    if(IsBlockOutside())
+    {
+        currentBlock.Move(-1, 0);
+    }
 }
 
 bool Game::IsBlockOutside()

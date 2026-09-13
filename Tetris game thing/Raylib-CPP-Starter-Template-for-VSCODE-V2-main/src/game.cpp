@@ -102,3 +102,14 @@ void Game::RotateBlock()
         currentBlock.UndoRotation();
     }
 }
+
+void Game::LockBlock()
+{
+    std::vector<Position> tiles = currentBlock.GetCellPosition();
+    for(Position item: tiles)
+        {
+            grid.grid[item.row][item.column] = currentBlock.id;
+        }
+    currentBlock = nextBlock;
+    nextBlock = GetRandomBlock();
+}

@@ -13,7 +13,7 @@ public:
     bool IsCellEmpty(int row, int column);
     int grid[20][10];
 private:
-    STD::vector<Color> GetCellColors();
+    bool IsRowFull(int row);
     int numRows;
     int numCols;
     int cellSize;
